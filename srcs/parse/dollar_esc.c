@@ -54,19 +54,51 @@ static void 	dollar_esc(char **read_argv, char **argv, int argc, char **env)
 	}
 }
 
-static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
+static void 	get_begin(char **read_argv, char **begin, int dollar_i)
 {
+	if (dollar_i == 0)
+		*begin = ft_xmalloc(0);
+	else
+		*begin = ft_piecestrcpy(*read_argv, 0, dollar_i - 1);
+}
+
+static void 	get_end(char **read_argv, char **end, int dollar_i)
+{
+	int invalid_symb;
+
+	if (ft_isalpha((*read_argv)[dollar_i + 1]))
+	{
+		*end = ft_piecestrcpy(*read_argv, dollar_i + 1, ft_strlen(*read_argv));
+		return ;
+	}
+	invalid_symb = 0;
+	while ((*read_argv)[invalid_symb])
+	{
+		if (!(ft_isalpha((*read_argv)[invalid_symb]))
+			&& !(ft_isalpha((*read_argv)[invalid_symb])
+			&& (*read_argv)[invalid_symb] != '_'))
+			break ;
+		invalid_symb++;
+	}
 
 }
 
-static void 	dollar_esc(char **read_argv, char **argv, int argc, char **env)
+static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
+{
+	char *begin;
+	char *end;
+
+	begin = get_begin(read_argv, &begin);
+}
+
+void			dollar_esc(char **read_argv, char **argv, int argc, char **env)
 {
 	int dollar_i;
 
 	dollar_i = ft_chrsetcmp(*read_argv, "$");
 	while (dollar_i >= 0 && ft_strlen((*read_argv)[dollar_i]) < dollar_i)
 	{
-		dollar_change(*read_argv, argv, env, dollar_i)
+		dollar_change(*read_argv, argv, env, dollar_i);
+		dollar_i = ft_chrsetcmp(*read_argv, "$");
 	}
-
 }
