@@ -62,14 +62,14 @@ static void 	get_begin(char **read_argv, char **begin, int dollar_i)
 		*begin = ft_piecestrcpy(*read_argv, 0, dollar_i - 1);
 }
 
-static void 	get_end(char **read_argv, char **end, int dollar_i)
+static int 	get_end(char **read_argv, char **end, int dollar_i)
 {
 	int invalid_symb;
 
 	if (ft_isalpha((*read_argv)[dollar_i + 1]))
 	{
 		*end = ft_piecestrcpy(*read_argv, dollar_i + 1, ft_strlen(*read_argv));
-		return ;
+		return (0);
 	}
 	invalid_symb = 0;
 	while ((*read_argv)[invalid_symb])
@@ -80,15 +80,31 @@ static void 	get_end(char **read_argv, char **end, int dollar_i)
 			break ;
 		invalid_symb++;
 	}
+	*end = ft_piecestrcpy(*read_argv, invalid_symb, ft_strlen(*read_argv));
+	return (invalid_symb);
+}
+
+static void 	get_middle(char **read_argv, char **end, int dollar_i, int dollar_end)
+{
+	if (ft_isalpha((*read_argv)[dollar_i + 1]))
+	{
+
+	}
 
 }
 
 static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
 {
 	char *begin;
+	char *middle;
 	char *end;
+	int dollar_end;
 
-	begin = get_begin(read_argv, &begin);
+	get_begin(read_argv, &begin, dollar_i);
+	dollar_end = get_end(*read_argv, &end, dollar_i);
+	get_middle(*read_argv, &middle, dollar_i, dollar_end);
+	//is_alfa ? get_argv : get_env
+
 }
 
 void			dollar_esc(char **read_argv, char **argv, int argc, char **env)
