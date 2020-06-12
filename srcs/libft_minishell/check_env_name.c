@@ -2,6 +2,8 @@
 // Created by slavanya on 31.05.2020.
 //
 
+#include <libft.h>
+
 static int 	check_env_name(char  *argv)
 {
 	int i;

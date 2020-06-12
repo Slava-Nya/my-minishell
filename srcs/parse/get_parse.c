@@ -18,7 +18,7 @@ static void		check_symbols(char ***read_argv, char **argv, int argc, char **env)
 		dollar_esc(&((*read_argv)[i]), argv, argc, env);
 		tilda_i = ft_chrsetcmp(&((*read_argv)[i]), "~");
 		if (tilda_i >= 0 && home)
-			tilda_esc(&((*read_argv)[i]));
+			tilda_esc(&((*read_argv)[i]), home, tilda_i);
 		i++;
 	}
 }
