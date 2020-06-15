@@ -13,7 +13,7 @@ static void		check_symbols(char ***read_argv, char **argv, int argc, char **env)
 
 	i = 0;
 	home = get_env_str("HOME", env);
-	while (i < argc)
+	while ((*read_argv)[i])
 	{
 		dollar_esc(&((*read_argv)[i]), argv, argc, env);
 		tilda_i = ft_chrsetcmp(&((*read_argv)[i]), "~");

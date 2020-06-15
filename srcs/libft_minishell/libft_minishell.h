@@ -11,8 +11,9 @@
 
 char	**get_bin_paths(char **env);
 char	*get_env_str(char *env_name, char **env);
-int	change_env_str(char *env_name, char *new_str, char ***env);
+int		change_env_str(char *env_name, char *new_str, char ***env);
 void 	get_full_path(char *full_path, char *start, char *end);
-static int 	check_env_name(char  *argv);
+int		check_env_name(char  *argv);
+
 
 #endif //LIBFT_MINISHELL_H

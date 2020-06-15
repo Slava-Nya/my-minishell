@@ -4,7 +4,7 @@
 
 #include "libft.h"
 
-int		ft_chrsetcmp(const char *s, char const *chrset)
+int		ft_chrsetcmp(char const *s, char *chrset)
 {
 	size_t i;
 	size_t j;

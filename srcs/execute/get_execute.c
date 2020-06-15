@@ -13,7 +13,7 @@ void 	get_execute(char **read_argv, char ***env)
 	char 	**env_paths;
 	char 	full_env_path[MAX_PATH];
 
-	if ((exec_builtins(read_argv, env)))
+	if (exec_builtins(read_argv, env))
 		return ;
 	env_paths = get_bin_paths(*env);
 	if (try_exec_bins(read_argv, env_paths, full_env_path))

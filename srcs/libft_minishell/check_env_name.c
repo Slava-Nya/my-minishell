@@ -4,7 +4,7 @@
 
 #include <libft.h>
 
-static int 	check_env_name(char  *argv)
+int 	check_env_name(char  *argv)
 {
 	int i;
 

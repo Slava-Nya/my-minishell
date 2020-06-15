@@ -15,7 +15,7 @@ char	*get_env_str(char *env_name, char **env)
 	while (env[count])
 	{
 		if (ft_strncmp(env_name, env[count], env_name_len) == 0
-			&& env[count][env_name_len + 1] == '=')
+			&& env[count][env_name_len] == '=')
 		{
 			str = ft_strchr(env[count], '=');
 			return (++str);
