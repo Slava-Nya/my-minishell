@@ -17,9 +17,9 @@ char	**get_parse(char **argv, int argc, char *read_buf, char **env);
 void	tilda_esc(char **read_argv, char *home, int tilda_i);
 void	dollar_esc(char **read_argv, char **argv, int argc, char **env);
 
-void 	get_begin(char **read_argv, char **begin, int dollar_i);
-int 	get_end(char **read_argv, char **end, int dollar_i);
-void 	get_middle(char **read_argv, char **argv, char **env, int end_of_middle)
+void 	dollar_get_begin(char **read_argv, char **begin, int dollar_i);
+char	*dollar_get_middle(char **read_argv, char **argv, char **env, int end_of_middle);
+int 	dollar_get_end(char **read_argv, char **end, int dollar_i);
 
 #endif //MINISHELL_H
 

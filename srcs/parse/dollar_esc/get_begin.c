@@ -4,7 +4,7 @@
 
 #include <libft.h>
 
-void 	get_begin(char **read_argv, char **begin, int dollar_i)
+void 	dollar_get_begin(char **read_argv, char **begin, int dollar_i)
 {
 	if (dollar_i == 0)
 		*begin = ft_strnew(0);

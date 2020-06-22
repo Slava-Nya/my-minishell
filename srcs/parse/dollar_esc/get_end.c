@@ -4,7 +4,7 @@
 
 #include <libft.h>
 
-int 	get_end(char **read_argv, char **end, int dollar_i)
+int 	dollar_get_end(char **read_argv, char **end, int dollar_i)
 {
 	int invalid_symb;
 
@@ -13,7 +13,7 @@ int 	get_end(char **read_argv, char **end, int dollar_i)
 		*end = ft_piecestrcpy(*read_argv, dollar_i + 2, ft_strlen(*read_argv));
 		return (0);
 	}
-	invalid_symb = 0;
+	invalid_symb = dollar_i + 1;
 	while ((*read_argv)[invalid_symb])
 	{
 		if (!(ft_isalpha((*read_argv)[invalid_symb]))
