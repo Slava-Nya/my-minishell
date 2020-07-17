@@ -12,6 +12,7 @@ char	*dollar_get_middle(char **read_argv, char **argv, char **env, int end_of_mi
 	char *env_name;
 
 	dollar_i = ft_chrsetcmp(*read_argv, "$");
+	ft_putstr(argv[dollar_i + 1]);
 	if (ft_isdigit((*read_argv)[dollar_i + 1]) &&
 		argv[((*read_argv)[dollar_i + 1])])
 	{

@@ -3,7 +3,6 @@
 //
 
 #include <minishell.h>
-#include <wait.h>
 #include "builtins.h"
 #include "../libft_minishell/libft_minishell.h"
 #include "../libft_minishell/errors.h"

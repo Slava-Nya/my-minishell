@@ -7,13 +7,11 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
+ /*
+  * unsetenv удаление строки
+  */
 
-/*
- * 1) брать переменные echo из env
- * 2) setenv не работает
- */
-
-int		main(int argc, char  **argv, char **env)
+ int		main(int argc, char  **argv, char **env)
 {
 	char read_buf[BUF];
 	char **read_argv;

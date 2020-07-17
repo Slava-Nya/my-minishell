@@ -34,6 +34,7 @@ void			dollar_esc(char **read_argv, char **argv, int argc, char **env)
 		{
 			dollar_change(read_argv, argv, env, dollar_i);
 		}
+//		else
 		dollar_i = ft_chrsetcmp(*read_argv, "$");
 	}
 }
