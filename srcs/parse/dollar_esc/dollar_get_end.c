@@ -17,7 +17,7 @@ int 	dollar_get_end(char **read_argv, char **end, int dollar_i)
 	while ((*read_argv)[invalid_symb])
 	{
 		if (!(ft_isalpha((*read_argv)[invalid_symb]))
-			&& !(ft_isalpha((*read_argv)[invalid_symb])
+			&& !(ft_isdigit((*read_argv)[invalid_symb])
 				 && (*read_argv)[invalid_symb] != '_'))
 			break ;
 		invalid_symb++;

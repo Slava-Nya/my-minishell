@@ -5,9 +5,6 @@
 #include <minishell.h>
 #include "../../libft_minishell/libft_minishell.h"
 
-
-
-
 static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
 {
 	char *begin;
@@ -30,11 +27,10 @@ void			dollar_esc(char **read_argv, char **argv, int argc, char **env)
 	int tmp = ft_strlen(*read_argv);
 	while (dollar_i >= 0 && ft_strlen(*read_argv) > (dollar_i))
 	{
-		if (ft_isdigit((*read_argv)[dollar_i + 1]))
-		{
+//		if (ft_isdigit((*read_argv)[dollar_i + 1]))
+//		{
 			dollar_change(read_argv, argv, env, dollar_i);
-		}
-//		else
+//		}
 		dollar_i = ft_chrsetcmp(*read_argv, "$");
 	}
 }
