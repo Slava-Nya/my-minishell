@@ -13,10 +13,17 @@
 
 static void		change_directory(char ***env, char *argv, char *new_pwd, char *oldpwd)
 {
+	char pwd[MAX_PATH];
+
+	ft_bzero(pwd, MAX_PATH);
+	getcwd(pwd, MAX_PATH);;
 	if (!new_pwd)
 		puterror(cd_no_file, argv, "cd");
 	else if (chdir(new_pwd) == 0)
+	{
 		change_env_str("PWD=", new_pwd, env);
+		change_env_str("OLDPWD=", oldpwd, env);
+	}
 	else
 		puterror(cd_no_file, new_pwd, "cd");
 }

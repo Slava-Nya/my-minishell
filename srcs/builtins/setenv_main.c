@@ -26,6 +26,8 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 		new_enw[env_argc] = ft_strdup(argv);
 		(*env) = new_enw;
 	}
+	free(env_name);
+	free(new_enw);
 }
 
 int 	setenv_main(char **argv, char ***env)

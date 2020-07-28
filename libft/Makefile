@@ -14,14 +14,15 @@
 
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
-HDR_PATH= includes/
+
+HDR_PATH = ./
 
 SRC =  \
 		ft_putnbr_fd.c	\
 		ft_putendl_fd.c \
 		ft_putstr_fd.c \
 		ft_putchar_fd.c	\
-		ft_putnbr.c	\
+		ft_putnbr.c		\
 		ft_putendl.c	\
 		ft_putstr.c		\
 		ft_putchar.c	\
@@ -70,7 +71,7 @@ SRC =  \
 		ft_strlcat.c	\
 		ft_strchr.c		\
 		ft_lstnew.c		\
-		ft_lsdelone.c	\
+		ft_lstdelone.c	\
 		ft_lstdel.c		\
 		ft_lstadd.c		\
 		ft_lstiter.c	\
@@ -87,34 +88,25 @@ SRC =  \
 		ft_2darraycpy.c	\
 		ft_nstrjoin.c
 
-HEAD = libft.h \
+BUILD_DIR= ./obj
 
-OBJ_DIR := ./obj
-
-OBJ	:= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
-
-LFLAGS	:= -L $(LIB_DIR) -lft
+OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR) $(CMP_DIR)
+$(NAME): $(BUILD_DIR) $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD)
-	gcc $(CFLAGS) $(INC) -o $@ -c $<
+$(BUILD_DIR):
+	mkdir -p  $(BUILD_DIR)
 
-$(NAME): $(OBJ_DIR) $(OBJ) | lib
-	gcc -o $(NAME) $(OBJ) $(LFLAGS)
-
-lib:
-	make -C $(LIB_DIR)
+$(BUILD_DIR)/%.o: %.c $(HDRS)
+	gcc -c $(FLAGS) -o $@ $< -I $(HDR_PATH)
 
 clean:
-	rm -rf $(OBJ_DIR) $(CMP_DIR)
-	make clean -C $(LIB_DIR)
+	rm -rf $(BUILD_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C $(LIB_DIR)
 
 re: fclean all

@@ -14,12 +14,10 @@
 
 void		*ft_realloc(void *old, size_t new_len)
 {
-	size_t	old_len;
 	void	*new;
 
 	if (!(old))
 		return (NULL);
-	old_len = ft_strlen(old);
 	if (!(new = ft_memalloc(new_len + 1)))
 	{
 		free(old);

@@ -3,7 +3,7 @@
 //
 
 #include <libft.h>
-#include "../../libft_minishell/libft_minishell.h"
+#include "../libft_minishell/libft_minishell.h"
 
 
 char	*dollar_get_middle(char **read_argv, char **argv, char **env, int end_of_middle)
