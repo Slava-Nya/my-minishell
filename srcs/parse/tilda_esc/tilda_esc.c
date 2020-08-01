@@ -3,7 +3,7 @@
 //
 
 #include <minishell.h>
-#include "../libft_minishell/libft_minishell.h"
+#include "libft_minishell.h"
 
 static int		get_end(char **end, char **read_argv, int tilda_i)
 {
@@ -32,6 +32,8 @@ void	tilda_esc(char **read_argv, char *home, int tilda_i)
 	char *begin;
 	char *end;
 
+	begin = NULL;
+	end = NULL;
 	if (!(*read_argv)[1])
 		*read_argv = home;
 	else

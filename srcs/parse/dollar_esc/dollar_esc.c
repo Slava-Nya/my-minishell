@@ -2,8 +2,7 @@
 // Created by slavanya on 06.06.2020.
 //
 
-#include <minishell.h>
-#include "../libft_minishell/libft_minishell.h"
+#include "minishell.h"
 
 static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
 {
@@ -21,12 +20,12 @@ static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar
 	free(end);
 }
 
-void			dollar_esc(char **read_argv, char **argv, int argc, char **env)
+void dollar_esc(char **read_argv, char **argv, char **env)
 {
 	int dollar_i;
 
 	dollar_i = ft_chrsetcmp(*read_argv, "$");
-	while (dollar_i >= 0 && ft_strlen(*read_argv) > (dollar_i))
+	while (dollar_i >= 0 && (int)(ft_strlen(*read_argv)) > (dollar_i))
 	{
 		dollar_change(read_argv, argv, env, dollar_i);
 		dollar_i = ft_chrsetcmp(*read_argv, "$");

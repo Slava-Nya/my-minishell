@@ -2,9 +2,9 @@
 // Created by slavanya on 02.05.2020.
 //
 
-#include <libft.h>
-#include "../libft_minishell/errors.h"
-#include "../libft_minishell/libft_minishell.h"
+#include "libft.h"
+#include "errors.h"
+#include "libft_minishell.h"
 
 static void		unsetenv_argv(char *argv, char ***env)
 {
@@ -25,7 +25,6 @@ static int 	check_argv(char  *argv)
 	i = 1;
 	while (argv[i])
 	{
-		char ts = argv[i];
 		if ((!ft_isalpha(argv[i])) && (!ft_isdigit(argv[i]))
 			&& argv[i] != '_')
 			return (0);

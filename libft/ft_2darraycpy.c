@@ -18,7 +18,7 @@ char **ft_2darraycpy(char **arr, int dest_len)
 	if (dest_len < len)
 		return (NULL);
 	dest = ft_xmalloc(sizeof(char *) * (dest_len + 1));
-	dest[dest_len] = '\0';
+	//dest[dest_len] = '\0';
 	while (i < len)
 	{
 		dest[i] = ft_strdup(arr[i]);

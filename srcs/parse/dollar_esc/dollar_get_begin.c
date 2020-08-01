@@ -2,7 +2,7 @@
 // Created by slava-nya on 6/14/20.
 //
 
-#include <libft.h>
+#include "libft.h"
 
 void 	dollar_get_begin(char **read_argv, char **begin, int dollar_i)
 {

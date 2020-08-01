@@ -2,10 +2,10 @@
 // Created by slavanya on 02.05.2020.
 //
 
-#include <minishell.h>
-#include <builtins.h>
-#include "../libft_minishell/libft_minishell.h"
-#include "../libft_minishell/errors.h"
+#include "minishell.h"
+#include "builtins.h"
+#include "libft_minishell.h"
+#include "errors.h"
 /*
  * сделвть смену oldpwd
  */

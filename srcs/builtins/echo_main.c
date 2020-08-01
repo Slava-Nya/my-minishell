@@ -2,7 +2,7 @@
 // Created by slavanya on 02.05.2020.
 //
 
-#include <libft.h>
+#include "libft.h"
 
 int 	echo_main(char **line_argv, char ***env)
 {
@@ -17,5 +17,6 @@ int 	echo_main(char **line_argv, char ***env)
 		i++;
 	}
 	ft_putchar('\n');
+	(void)env;
 	return (1);
 }

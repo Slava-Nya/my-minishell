@@ -10,7 +10,7 @@ char 	*ft_piecestrcpy(char *s, int start, int end)
 	int i;
 
 	i = 0;
-	if (!*s || start > end || ft_strlen(s) < end)
+	if (!*s || start > end || (int)ft_strlen(s) < end)
 		new = ft_strnew(0);
 	new = ft_xmalloc(sizeof(char *) * (end - start + 1));
 	while (start <= end)

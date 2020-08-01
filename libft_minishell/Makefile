@@ -1,50 +1,43 @@
-
-
 .PHONY: all clean fclean re
 
-NAME = libft_minishell.a
-FLAGS = -Wall -Wextra -Werror
+NAME		= libft_minishell.a
+FLAGS		= -Wall -Wextra -Werror
 
-SRCS =	\
-		change_env_str.c	\
-		check_env_name.c	\
-		error.c				\
-		get_bin_paths.c		\
-		get_env_str.c		\
-		get_full_path.c		\
+SRC_DIR		= ./src
+BUILD_DIR	= ./obj
+INCLUDE_DIR	= ./include
 
+FT_DIR		=	../libft
+FT_INC_DIR	=	../libft
 
-HEAD = \
-         errors.h \
-         libft_minishell.h	\
+SRC			=	\
+				change_env_str.c	\
+				check_env_name.c	\
+				error.c				\
+				get_bin_paths.c		\
+				get_env_str.c		\
+				get_full_path.c
 
-OBJ_DIR := ./obj
+OBJ			=	$(addprefix $(BUILD_DIR)/,$(SRC:.c=.o))
 
-OBJ	:= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
-CFLAGS	:= -Wall -Wextra -Werror
-
-NAME = libft_minishell
+INCS		=	-I$(INCLUDE_DIR) -I$(FT_INC_DIR)
+LIBS		=	-L$(FT_DIR) -lft
 
 all: $(NAME)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR) $(CMP_DIR)
+$(NAME): $(BUILD_DIR) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD)
-	gcc $(CFLAGS) $(INC) -o $@ -c $<
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
-$(NAME): $(OBJ_DIR) $(OBJ) | lib
-	gcc -o $(NAME) $(OBJ) $(LFLAGS)
-
-lib:
-	make -C $(LIB_DIR)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	gcc $(FLAGS) $(INCS) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJ_DIR) $(CMP_DIR)
-	make clean -C $(LIB_DIR)
+	rm -rf $(BUILD_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C $(LIB_DIR)
 
 re: fclean all

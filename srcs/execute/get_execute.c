@@ -2,10 +2,10 @@
 // Created by slavanya on 26.04.2020.
 //
 
-#include <minishell.h>
+#include "minishell.h"
 #include "builtins.h"
-#include "../libft_minishell/libft_minishell.h"
-#include "../libft_minishell/errors.h"
+#include "libft_minishell.h"
+#include "errors.h"
 
 void 	get_execute(char **read_argv, char ***env)
 {

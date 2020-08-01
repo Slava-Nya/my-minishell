@@ -2,8 +2,8 @@
 // Created by slava-nya on 6/14/20.
 //
 
-#include <libft.h>
-#include "../libft_minishell/libft_minishell.h"
+#include "libft.h"
+#include "libft_minishell.h"
 
 
 char	*dollar_get_middle(char **read_argv, char **argv, char **env, int end_of_middle)
@@ -16,7 +16,7 @@ char	*dollar_get_middle(char **read_argv, char **argv, char **env, int end_of_mi
 
 	dollar_i = ft_chrsetcmp(*read_argv, "$");
 	if (ft_isdigit((*read_argv)[dollar_i + 1]) &&
-		argv[((*read_argv)[dollar_i + 1])])
+		argv[((*read_argv)[dollar_i + 1]) - '0'])
 	{
 		argc = ft_arraylen(argv);
 		argv_index = (*read_argv)[dollar_i + 1] - '0';

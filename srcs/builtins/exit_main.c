@@ -6,5 +6,7 @@
 
 int 	exit_main(char **argv, char ***env)
 {
+	(void)env;
+	(void)argv;
 	exit(0);
 }

@@ -6,7 +6,7 @@
 #    By: hlorrine <hlorrine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/21 22:10:19 by hlorrine          #+#    #+#              #
-#    Updated: 2019/11/18 19:26:07 by hlorrine         ###   ########.fr        #
+#    Updated: 2020/08/01 22:53:25 by hlorrine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,9 @@ SRC =  \
 		ft_strcharsetsplit.c	\
 		ft_arraylen.c	\
 		ft_2darraycpy.c	\
-		ft_nstrjoin.c
+		ft_nstrjoin.c \
+		ft_chrsetcmp.c \
+		ft_piecestrcpy.c
 
 BUILD_DIR= ./obj
 

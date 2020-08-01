@@ -2,10 +2,10 @@
 // Created by slavanya on 02.05.2020.
 //
 
-#include <libft.h>
-#include <builtins.h>
-#include "../libft_minishell/errors.h"
-#include "../libft_minishell/libft_minishell.h"
+#include "libft.h"
+#include "builtins.h"
+#include "errors.h"
+#include "libft_minishell.h"
 
 static void setenv_argv(char *argv, char ***env, int equals_symb)
 {
@@ -13,8 +13,9 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 	char	*env_name;
 	char	**new_enw;
 
+
 	env_name = ft_piecestrcpy(argv, 0, equals_symb - 1);
-	if (get_env_str(env_name, *env) != NULL)
+	if ((get_env_str(env_name, *env)) != NULL)
 	{
 		argv += (equals_symb + 1);
 		change_env_str(env_name, argv, env);
@@ -27,7 +28,6 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 		(*env) = new_enw;
 	}
 	free(env_name);
-	free(new_enw);
 }
 
 int 	setenv_main(char **argv, char ***env)

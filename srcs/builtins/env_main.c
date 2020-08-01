@@ -2,7 +2,7 @@
 // Created by slavanya on 02.05.2020.
 //
 
-#include <libft.h>
+#include "libft.h"
 
 int 	env_main(char **argv, char ***env)
 {
@@ -17,5 +17,6 @@ int 	env_main(char **argv, char ***env)
 			ft_putendl(*env_cpy);
 		env_cpy++;
 	}
+	(void)argv;
 	return (0);
 }
