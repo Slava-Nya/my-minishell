@@ -13,7 +13,7 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 	char	*env_name;
 	char	**new_enw;
 
-
+	new_enw = NULL;
 	env_name = ft_piecestrcpy(argv, 0, equals_symb - 1);
 	if ((get_env_str(env_name, *env)) != NULL)
 	{
@@ -28,6 +28,10 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 		(*env) = new_enw;
 	}
 	free(env_name);
+	env_argc = -1;
+	while (new_enw[++env_argc])
+		free(new_enw[env_argc]);
+	free(new_enw);
 }
 
 int 	setenv_main(char **argv, char ***env)

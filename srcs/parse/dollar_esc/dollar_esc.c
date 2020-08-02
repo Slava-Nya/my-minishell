@@ -1,7 +1,6 @@
 //
 // Created by slavanya on 06.06.2020.
 //
-
 #include "minishell.h"
 
 static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)

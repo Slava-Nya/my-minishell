@@ -5,11 +5,9 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(includes)
 include_directories(libft)
-include_directories(libft_minishell)
+include_directories(libft_minishell/include)
 
 add_executable(minishell
-        libft_minishell/libft_minishell.h
-        libft_minishell/errors.h
         includes/minishell.h
         libft/ft_atoi.c
         libft/ft_bzero.c
@@ -76,4 +74,4 @@ add_executable(minishell
         libft/ft_wordcount.c
         libft/get_next_line.c
         libft/libft.h
-        srcs/main.c srcs/parse/get_parse.c srcs/execute/get_execute.c libft_minishell/get_bin_paths.c srcs/execute/try_exec_bins.c libft/ft_strcharsetsplit.c libft/ft_xmalloc.c srcs/builtins/echo_main.c srcs/builtins/exec_builtins.c srcs/builtins/cd_main.c srcs/builtins/unsetenv_main.c srcs/builtins/env_main.c srcs/builtins/setenv_main.c srcs/builtins/exit_main.c includes/builtins.h libft_minishell/get_env_str.c libft/ft_arraylen.c libft_minishell/error.c libft_minishell/change_env_str.c libft/ft_2darraycpy.c libft/ft_nstrjoin.c libft_minishell/errors.h libft_minishell/libft_minishell.h libft_minishell/get_full_path.c libft/ft_chrsetcmp.c libft/ft_piecestrcpy.c libft_minishell/check_env_name.c srcs/parse/tilda_esc/tilda_esc.c srcs/parse/dollar_esc/dollar_esc.c srcs/parse/dollar_esc/dollar_get_begin.c srcs/parse/dollar_esc/dollar_get_end.c srcs/parse/dollar_esc/dollar_get_middle.c)
+        srcs/main.c srcs/parse/get_parse.c srcs/execute/get_execute.c libft_minishell/src/get_bin_paths.c srcs/execute/try_exec_bins.c libft/ft_strcharsetsplit.c libft/ft_xmalloc.c srcs/builtins/echo_main.c srcs/builtins/exec_builtins.c srcs/builtins/cd_main.c srcs/builtins/unsetenv_main.c srcs/builtins/env_main.c srcs/builtins/setenv_main.c srcs/builtins/exit_main.c includes/builtins.h libft_minishell/src/get_env_str.c libft/ft_arraylen.c libft_minishell/src/error.c libft_minishell/src/change_env_str.c libft/ft_2darraycpy.c libft/ft_nstrjoin.c libft_minishell/src/get_full_path.c libft/ft_chrsetcmp.c libft/ft_piecestrcpy.c libft_minishell/src/check_env_name.c srcs/parse/tilda_esc/tilda_esc.c srcs/parse/dollar_esc/dollar_esc.c srcs/parse/dollar_esc/dollar_get_begin.c srcs/parse/dollar_esc/dollar_get_end.c srcs/parse/dollar_esc/dollar_get_middle.c)

@@ -5,9 +5,18 @@
 
 #include "minishell.h"
 
- /*
-  * unsetenv удаление строки
-  */
+ static void		free_read_argv(char ***read_argv)
+ {
+	 int i;
+
+	 i = 0;
+	 while ((*read_argv)[i])
+	 {
+		 free((*read_argv)[i]);
+		 i++;
+	 }
+	 free(*read_argv);
+ }
 
  int		main(int argc, char  **argv, char **env)
 {
@@ -27,5 +36,6 @@
 		read_argv = get_parse(argv, read_buf, env_cpy);
 		if (*read_argv)
 			get_execute(read_argv, &env_cpy);
+		free_read_argv(&read_argv);
 	}
 }

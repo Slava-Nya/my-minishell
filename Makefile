@@ -1,6 +1,6 @@
 .PHONY: all clean fclean re
 
-NAME		= ft_minishell
+NAME		= minishell
 FLAGS		= -Wall -Wextra -Werror
 
 SRC_DIR		= ./srcs
