@@ -14,24 +14,21 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*new;
-	size_t	i;
+	char	*str;
+	size_t	sum;
 	size_t	len1;
 	size_t	len2;
 
-	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (len1 + len2 == 2147483647)
+	sum = len1 + len2;
+	if (sum < len1 || sum < len2)
 		return (NULL);
-	if (!(new = (char *)malloc(sizeof(*new) * (len1 + len2 + 1))))
+	if (!(str = ft_strnew(sum)))
 		return (NULL);
-	while (*s1)
-		new[i++] = *s1++;
-	while (*s2)
-		new[i++] = *s2++;
-	new[i] = '\0';
-	return (new);
+	ft_strcpy(str, s1);
+	ft_strcat(str, s2);
+	return (str);
 }

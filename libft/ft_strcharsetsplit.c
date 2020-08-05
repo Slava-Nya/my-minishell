@@ -1,6 +1,14 @@
-//
-// Created by slavanya on 02.05.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   strsplitcharset.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/24 02:05:13 by dbutterw          #+#    #+#             */
+/*   Updated: 2019/11/25 20:06:09 by dbutterw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -51,7 +59,8 @@ static void		getwords(char **arr, const char *s, char *charset)
 		}
 		i++;
 	}
-	arr[j] = ft_strsub(s, i - len, len);
+	if (len)
+		arr[j] = ft_strsub(s, i - len, len);
 }
 
 char			**ft_strcharsetsplit(char const *s, char *charset)
