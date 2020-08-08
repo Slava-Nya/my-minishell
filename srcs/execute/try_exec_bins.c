@@ -40,6 +40,8 @@ char		*try_exec_bins(char **read_argv, char **env_paths, char *full_env_path)
 		if (!(access(full_env_path, F_OK | X_OK)))
 			return (full_env_path);
 	}
+	if (env_paths == NULL)
+		return (NULL);
 	while (env_paths[i])
 	{
 		get_full_path(full_env_path, env_paths[i], read_argv[0]);

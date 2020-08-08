@@ -19,20 +19,20 @@
  }
 
 
-static char	**cpy_env(char **env)
-{
-	size_t	size;
-	char	**envcpy;
-
-	size = 0;
-	while (env[size])
-		size++;
-	envcpy = ft_xmalloc(sizeof(char*) * (size + 1));
-	envcpy[size] = NULL;
-	while (size--)
-		envcpy[size] = ft_strdup(env[size]);
-	return (envcpy);
-}
+//static char	**cpy_env(char **env)
+//{
+//	size_t	size;
+//	char	**envcpy;
+//
+//	size = 0;
+//	while (env[size])
+//		size++;
+//	envcpy = ft_xmalloc(sizeof(char*) * (size + 1));
+//	envcpy[size] = NULL;
+//	while (size--)
+//		envcpy[size] = ft_strdup(env[size]);
+//	return (envcpy);
+//}
 
  int		main(int argc, char  **argv, char **env)
 {
@@ -41,8 +41,8 @@ static char	**cpy_env(char **env)
 	char **env_cpy;
 	int red;
 
-//	env_cpy = ft_2darraycpy(env, ft_arraylen(env));
-	env_cpy = cpy_env(env);
+	env_cpy = ft_2darraycpy(env, ft_arraylen(env));
+//	env_cpy = cpy_env(env);
 	red = 1;
 	argc = 0;
 	while (1)

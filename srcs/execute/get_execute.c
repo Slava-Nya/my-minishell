@@ -7,14 +7,40 @@
 #include "libft_minishell.h"
 #include "errors.h"
 
+static void 	free_env_paths(char **env_paths)
+{
+	int i;
+
+	i = 0;
+	while (env_paths[i])
+	{
+		free(env_paths[i]);
+		i++;
+	}
+	free(env_paths);
+}
+
+static int 		check_register(const char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if ((s[i] < 97 || s[i] > 122) && s[i] != '/' && s[i] != '.')
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 static void 	exec_bins(char **read_argv, char ***env)
 {
 	char 	**env_paths;
 	char 	full_env_path[MAX_PATH];
-	int 	i;
 
-	i = 0;
-	if (!(env_paths = get_bin_paths(*env)))
+	env_paths = get_bin_paths(*env);
+	if (check_register(read_argv[0]))
 	{
 		puterror(false_command, read_argv[0], "");
 		return ;
@@ -31,12 +57,8 @@ static void 	exec_bins(char **read_argv, char ***env)
 	}
 	else
 		puterror(false_command, read_argv[0], "");
-	while (env_paths[i])
-	{
-		free(env_paths[i]);
-		i++;
-	}
-	free(env_paths);
+	if (env_paths)
+		free_env_paths(env_paths);
 }
 
 void 	get_execute(char **read_argv, char ***env)

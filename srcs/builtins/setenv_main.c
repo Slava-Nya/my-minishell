@@ -7,13 +7,28 @@
 #include "errors.h"
 #include "libft_minishell.h"
 
+
+
+static void		free_env(char ***env)
+{
+	int i;
+
+	i = 0;
+	while ((*env)[i])
+	{
+		free((*env)[i]);
+		i++;
+	}
+	free(*env);
+}
+
 static void setenv_argv(char *argv, char ***env, int equals_symb)
 {
 	int		env_argc;
 	char	*env_name;
-	char	**new_enw;
+	char	**new_env;
 
-	new_enw = NULL;
+	new_env = NULL;
 	env_name = ft_piecestrcpy(argv, 0, equals_symb - 1);
 	if ((get_env_str(env_name, *env)) != NULL)
 	{
@@ -23,15 +38,12 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 	else
 	{
 		env_argc = ft_arraylen(*env);
-		new_enw = ft_2darraycpy((*env), env_argc + 1);
-		new_enw[env_argc] = ft_strdup(argv);
-		(*env) = new_enw;
+		new_env = ft_2darraycpy((*env), env_argc + 1);
+		new_env[env_argc] = ft_strdup(argv);
+		free_env(env);
+		(*env) = new_env;
 	}
 	free(env_name);
-	env_argc = -1;
-	while (new_enw[++env_argc])
-		free(new_enw[env_argc]);
-	free(new_enw);
 }
 
 int 	setenv_main(char **argv, char ***env)

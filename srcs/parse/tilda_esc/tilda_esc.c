@@ -35,7 +35,10 @@ void	tilda_esc(char **read_argv, char *home, int tilda_i)
 	begin = NULL;
 	end = NULL;
 	if (!(*read_argv)[1])
-		*read_argv = home;
+	{
+		free(*read_argv);
+		*read_argv = ft_strdup(home);
+	}
 	else
 	{
 		if (!(get_begin(&begin, read_argv, tilda_i)))
@@ -43,7 +46,7 @@ void	tilda_esc(char **read_argv, char *home, int tilda_i)
 		if (!(get_end(&end, read_argv, tilda_i)))
 			return ;
 		*read_argv = ft_nstrjoin(3, begin, home, end);
+		free(begin);
+		free(end);
 	}
-	free(begin);
-	free(end);
 }

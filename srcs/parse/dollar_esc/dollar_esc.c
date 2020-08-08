@@ -13,6 +13,7 @@ static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar
 	dollar_get_begin(read_argv, &begin, dollar_i);
 	end_of_middle = dollar_get_end(read_argv, &end, dollar_i);
 	middle = dollar_get_middle(read_argv, argv, env, end_of_middle);
+	free(*read_argv);
 	*read_argv = ft_nstrjoin(3, begin, middle, end);
 	free(begin);
 	free(middle);
