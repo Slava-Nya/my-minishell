@@ -1,6 +1,14 @@
-//
-// Created by slavanya on 26.04.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_execute.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlorrine <hlorrine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/08 16:16:09 by hlorrine          #+#    #+#             */
+/*   Updated: 2020/08/08 16:16:11 by hlorrine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 #include "builtins.h"
@@ -19,32 +27,12 @@ static void 	free_env_paths(char **env_paths)
 	}
 	free(env_paths);
 }
-
-static int 		check_register(const char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if ((s[i] < 97 || s[i] > 122) && s[i] != '/' && s[i] != '.')
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
 static void 	exec_bins(char **read_argv, char ***env)
 {
 	char 	**env_paths;
 	char 	full_env_path[MAX_PATH];
 
 	env_paths = get_bin_paths(*env);
-	if (check_register(read_argv[0]))
-	{
-		puterror(false_command, read_argv[0], "");
-		return ;
-	}
 	if (try_exec_bins(read_argv, env_paths, full_env_path))
 	{
 		if (!fork())

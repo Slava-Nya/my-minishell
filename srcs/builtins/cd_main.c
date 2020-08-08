@@ -1,6 +1,14 @@
-//
-// Created by slavanya on 02.05.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd_main.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlorrine <hlorrine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/08 16:16:22 by hlorrine          #+#    #+#             */
+/*   Updated: 2020/08/08 16:16:24 by hlorrine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "dirent.h"
 #include "minishell.h"
@@ -20,11 +28,6 @@ static int	check_access(char *path)
 		puterror(cd_no_rules, path, "cd");
 		return (1);
 	}
-	else if (!opendir(path))
-	{
-		puterror(cd_not_dir, path, "cd");
-		return (1);
-	}
 	else if(ft_strlen(path) > MAX_PATH)
 	{
 		puterror(cd_long_name, path, "cd");
@@ -37,19 +40,18 @@ static void change_directory(char ***env, char *new_pwd, char *oldpwd)
 {
 	char pwd[MAX_PATH];
 
-	ft_bzero(pwd, MAX_PATH);
-	getcwd(pwd, MAX_PATH);;
+	if (!new_pwd)
+		return ;
 	if (check_access(new_pwd))
 		return ;
-	else if (!oldpwd || new_pwd || pwd[0] == '\0')
-	{
-		//проверять переменные env
-		return ;
-	}
 	else if (chdir(new_pwd) == 0)
 	{
-		change_env_str("PWD=", new_pwd, env);
-		change_env_str("OLDPWD=", oldpwd, env);
+		ft_bzero(pwd, MAX_PATH);
+		getcwd(pwd, MAX_PATH);;
+		if (get_env_str("OLDPWD", *env))
+			change_env_str("OLDPWD=", oldpwd, env);
+		if (get_env_str("PWD", *env))
+			change_env_str("PWD=", pwd, env);
 	}
 	else
 		puterror(cd_no_file, new_pwd, "cd");

@@ -1,7 +1,14 @@
-/*
- * переписать strsplit
- *
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlorrine <hlorrine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/08 16:15:10 by hlorrine          #+#    #+#             */
+/*   Updated: 2020/08/08 16:15:18 by hlorrine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -17,22 +24,6 @@
 	 }
 	 free(*read_argv);
  }
-
-
-//static char	**cpy_env(char **env)
-//{
-//	size_t	size;
-//	char	**envcpy;
-//
-//	size = 0;
-//	while (env[size])
-//		size++;
-//	envcpy = ft_xmalloc(sizeof(char*) * (size + 1));
-//	envcpy[size] = NULL;
-//	while (size--)
-//		envcpy[size] = ft_strdup(env[size]);
-//	return (envcpy);
-//}
 
  int		main(int argc, char  **argv, char **env)
 {

@@ -1,6 +1,15 @@
-//
-// Created by slavanya on 06.06.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dollar_esc.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlorrine <hlorrine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/08 16:15:38 by hlorrine          #+#    #+#             */
+/*   Updated: 2020/08/08 16:15:41 by hlorrine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
