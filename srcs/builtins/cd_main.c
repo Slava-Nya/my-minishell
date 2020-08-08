@@ -16,19 +16,19 @@
 #include "libft_minishell.h"
 #include "errors.h"
 
-static int	check_access(char *path)
+static int		check_access(char *path)
 {
 	if (!path || access(path, F_OK) == -1)
 	{
 		puterror(cd_no_file, path, "cd");
-		return(1);
+		return (1);
 	}
 	else if (access(path, R_OK) == -1)
 	{
-		puterror(cd_no_rules, path, "cd");
+		puterror(no_rules, path, "cd");
 		return (1);
 	}
-	else if(ft_strlen(path) > MAX_PATH)
+	else if (ft_strlen(path) > MAX_PATH)
 	{
 		puterror(cd_long_name, path, "cd");
 		return (1);
@@ -36,7 +36,7 @@ static int	check_access(char *path)
 	return (0);
 }
 
-static void change_directory(char ***env, char *new_pwd, char *oldpwd)
+static void		change_directory(char ***env, char *new_pwd, char *oldpwd)
 {
 	char pwd[MAX_PATH];
 
@@ -47,7 +47,7 @@ static void change_directory(char ***env, char *new_pwd, char *oldpwd)
 	else if (chdir(new_pwd) == 0)
 	{
 		ft_bzero(pwd, MAX_PATH);
-		getcwd(pwd, MAX_PATH);;
+		getcwd(pwd, MAX_PATH);
 		if (get_env_str("OLDPWD", *env))
 			change_env_str("OLDPWD=", oldpwd, env);
 		if (get_env_str("PWD", *env))
@@ -65,10 +65,10 @@ static void		get_paths(char **env, t_paths *paths)
 	paths->home = get_env_str("HOME", env);
 }
 
-int 	cd_main(char **argv, char ***env)
+int				cd_main(char **argv, char ***env)
 {
-	int argc;
-	t_paths paths;
+	int		argc;
+	t_paths	paths;
 
 	argc = ft_arraylen(argv);
 	get_paths(*env, &paths);

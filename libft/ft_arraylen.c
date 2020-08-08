@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int 	ft_arraylen(char **array)
+#include "libft.h"
+
+int		ft_arraylen(char **array)
 {
-	int 	len;
+	int len;
 
 	len = 0;
 	if (!array)

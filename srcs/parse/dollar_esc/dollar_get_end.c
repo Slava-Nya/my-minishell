@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int 	dollar_get_end(char **read_argv, char **end, int dollar_i)
+int		dollar_get_end(char **read_argv, char **end, int dollar_i)
 {
 	int invalid_symb;
 
@@ -26,7 +26,7 @@ int 	dollar_get_end(char **read_argv, char **end, int dollar_i)
 	{
 		if (!(ft_isalpha((*read_argv)[invalid_symb]))
 			&& !(ft_isdigit((*read_argv)[invalid_symb])
-				 && (*read_argv)[invalid_symb] != '_'))
+			&& (*read_argv)[invalid_symb] != '_'))
 			break ;
 		invalid_symb++;
 	}

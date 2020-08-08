@@ -14,9 +14,9 @@
 
 char	*get_env_str(char *env_name, char **env)
 {
-	int 	env_name_len;
-	int 	count;
-	char 	*str;
+	int		env_name_len;
+	int		count;
+	char	*str;
 
 	env_name_len = ft_strlen(env_name);
 	count = 0;

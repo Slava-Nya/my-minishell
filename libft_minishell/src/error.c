@@ -13,8 +13,16 @@
 #include "libft_minishell.h"
 #include "errors.h"
 
-void 	puterror(int errno, char *argv, char *builtin)
+void	puterror(int errno, char *argv, char *builtin)
 {
+	static const char		*error_map_str[N_ERRORS] = {
+			"command not found",
+			"no such file or directory",
+			"permission denied",
+			"file name too long",
+			"not a valid identifier",
+	};
+
 	ft_putstr_fd("bash: ", 2);
 	ft_putstr_fd(builtin, 2);
 	ft_putstr_fd(": ", 2);

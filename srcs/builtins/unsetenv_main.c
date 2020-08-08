@@ -16,7 +16,7 @@
 
 static void		unsetenv_argv(char *argv, char ***env)
 {
-	int 	cnt;
+	int		cnt;
 	char	*argv_full;
 
 	argv_full = ft_strjoin(argv, "=");
@@ -26,7 +26,7 @@ static void		unsetenv_argv(char *argv, char ***env)
 	free(argv_full);
 }
 
-static int 	check_argv(char  *argv)
+static int		check_argv(char *argv)
 {
 	int i;
 
@@ -43,7 +43,7 @@ static int 	check_argv(char  *argv)
 	return (1);
 }
 
-int 	unsetenv_main(char **argv, char ***env)
+int				unsetenv_main(char **argv, char ***env)
 {
 	int argc;
 	int cnt;

@@ -102,7 +102,7 @@ char				**ft_strcharsetsplit(char const *s, char *charset);
 void				*ft_xmalloc(size_t size);
 int					ft_arraylen(char **array);
 char				**ft_2darraycpy(char **arr, int dest_len);
-char 				*ft_nstrjoin(int n, ...);
+char				*ft_nstrjoin(int n, ...);
 int					ft_chrsetcmp(char const *s, char *chrset);
 char				*ft_piecestrcpy(char *s, int start, int end);
 

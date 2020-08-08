@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int 	env_main(char **argv, char ***env)
+int		env_main(char **argv, char ***env)
 {
 	char **env_cpy;
 

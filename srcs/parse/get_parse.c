@@ -13,11 +13,11 @@
 #include "minishell.h"
 #include "libft_minishell.h"
 
-static void check_symbols(char ***read_argv, char **argv, char **env)
+static void		check_symbols(char ***read_argv, char **argv, char **env)
 {
-	int 	i;
+	int		i;
 	char	*home;
-	int 	tilda_i;
+	int		tilda_i;
 
 	i = 0;
 	home = get_env_str("HOME", env);
@@ -31,7 +31,7 @@ static void check_symbols(char ***read_argv, char **argv, char **env)
 	}
 }
 
-char **get_parse(char **argv, char *read_buf, char **env)
+char			**get_parse(char **argv, char *read_buf, char **env)
 {
 	char	**read_argv;
 

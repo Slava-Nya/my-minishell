@@ -21,5 +21,5 @@ char	**get_bin_paths(char **env)
 		return (NULL);
 	bins_full_path = get_env_str("PATH", env);
 	bins_paths = ft_strsplit(bins_full_path, ':');
-	return(bins_paths);
+	return (bins_paths);
 }

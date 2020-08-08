@@ -12,8 +12,10 @@
 
 #include "libft.h"
 #include "libft_minishell.h"
+#include <sys/stat.h>
+#include <errors.h>
 
-static int	is_path(const char *path)
+static int		is_path(const char *path)
 {
 	if (*path == '/' || (*path == '.' && *(path + 1) == '/') \
 		|| (*path == '.' && *(path + 1) == '.' && *(path + 2) == '/'))
@@ -21,15 +23,21 @@ static int	is_path(const char *path)
 	return (0);
 }
 
-static char	*check_path(char *path, char *full_env_path)
+static char		*check_path(char *path, char *full_env_path)
 {
-	int i;
+	int				i;
+	struct stat		info;
+	unsigned int	type;
 
 	i = 0;
-	if (access(path, F_OK | X_OK))
+	stat(path, &info);
+	type = info.st_mode & S_IFMT;
+	if (type == S_IFDIR)
+	{
 		return (NULL);
+	}
 	ft_bzero(full_env_path, MAX_PATH);
-	while(path[i])
+	while (path[i])
 	{
 		full_env_path[i] = path[i];
 		i++;
@@ -37,25 +45,29 @@ static char	*check_path(char *path, char *full_env_path)
 	return (full_env_path);
 }
 
-char		*try_exec_bins(char **read_argv, char **env_paths, char *full_env_path)
+char			*try_exec_bins(char **read_argv, char **env_paths,\
+char *full_env_path)
 {
-	int 	i;
+	int i;
 
 	i = 0;
 	if (is_path(read_argv[0]))
 	{
-		full_env_path = check_path(read_argv[0], full_env_path);
+		if (!(full_env_path = check_path(read_argv[0], full_env_path)))
+		{
+			puterror(no_rules, read_argv[0], "");
+			return (NULL);
+		}
 		if (!(access(full_env_path, F_OK | X_OK)))
 			return (full_env_path);
 	}
-	if (env_paths == NULL)
-		return (NULL);
 	while (env_paths[i])
 	{
 		get_full_path(full_env_path, env_paths[i], read_argv[0]);
 		if (!(access(full_env_path, F_OK | X_OK)))
-				return (full_env_path);
-			i++;
+			return (full_env_path);
+		i++;
 	}
+	puterror(false_command, read_argv[0], "");
 	return (NULL);
 }

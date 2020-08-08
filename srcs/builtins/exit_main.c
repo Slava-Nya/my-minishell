@@ -12,7 +12,7 @@
 
 #include "builtins.h"
 
-int 	exit_main(char **argv, char ***env)
+int		exit_main(char **argv, char ***env)
 {
 	(void)env;
 	(void)argv;

@@ -15,8 +15,6 @@
 #include "errors.h"
 #include "libft_minishell.h"
 
-
-
 static void		free_env(char ***env)
 {
 	int i;
@@ -30,7 +28,7 @@ static void		free_env(char ***env)
 	free(*env);
 }
 
-static void setenv_argv(char *argv, char ***env, int equals_symb)
+static void		setenv_argv(char *argv, char ***env, int equals_symb)
 {
 	int		env_argc;
 	char	*env_name;
@@ -54,7 +52,7 @@ static void setenv_argv(char *argv, char ***env, int equals_symb)
 	free(env_name);
 }
 
-int 	setenv_main(char **argv, char ***env)
+int				setenv_main(char **argv, char ***env)
 {
 	int argc;
 	int cnt;

@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int 	echo_main(char **line_argv, char ***env)
+int		echo_main(char **line_argv, char ***env)
 {
-	int 	i;
+	int i;
 
 	i = 1;
 	while (line_argv[i])

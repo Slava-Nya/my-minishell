@@ -12,10 +12,10 @@
 
 #include "libft_minishell.h"
 
-int	change_env_str(char *env_name, char *new_str, char ***env)
+int			change_env_str(char *env_name, char *new_str, char ***env)
 {
-	int 	env_name_len;
-	int 	count;
+	int	env_name_len;
+	int count;
 
 	env_name_len = ft_strlen(env_name);
 	count = 0;

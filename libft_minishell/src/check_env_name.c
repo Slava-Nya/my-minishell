@@ -12,7 +12,7 @@
 
 #include "libft_minishell.h"
 
-int 	check_env_name(char  *argv)
+int		check_env_name(char *argv)
 {
 	int i;
 

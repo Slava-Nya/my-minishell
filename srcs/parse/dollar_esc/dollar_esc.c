@@ -12,12 +12,13 @@
 
 #include "minishell.h"
 
-static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar_i)
+static void		dollar_change(char **read_argv, char **argv,\
+char **env, int dollar_i)
 {
-	char *begin;
-	char *middle;
-	char *end;
-	int end_of_middle;
+	char	*begin;
+	char	*middle;
+	char	*end;
+	int		end_of_middle;
 
 	dollar_get_begin(read_argv, &begin, dollar_i);
 	end_of_middle = dollar_get_end(read_argv, &end, dollar_i);
@@ -29,7 +30,7 @@ static void 	dollar_change(char **read_argv, char **argv, char **env, int dollar
 	free(end);
 }
 
-void dollar_esc(char **read_argv, char **argv, char **env)
+void			dollar_esc(char **read_argv, char **argv, char **env)
 {
 	int dollar_i;
 

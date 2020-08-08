@@ -13,9 +13,9 @@
 #include "libft.h"
 #include "builtins.h"
 
-int 	exec_builtins(char **read_argv, char ***env)
+int		exec_builtins(char **read_argv, char ***env)
 {
-	int 	i;
+	int i;
 
 	i = 0;
 	while (i < BUILTINS_CNT)

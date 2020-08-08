@@ -15,9 +15,9 @@
 #include "libft_minishell.h"
 #include "errors.h"
 
-static void 	free_env_paths(char **env_paths)
+static void		free_env_paths(char **env_paths)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (env_paths[i])
@@ -27,12 +27,18 @@ static void 	free_env_paths(char **env_paths)
 	}
 	free(env_paths);
 }
-static void 	exec_bins(char **read_argv, char ***env)
+
+static void		exec_bins(char **read_argv, char ***env)
 {
-	char 	**env_paths;
-	char 	full_env_path[MAX_PATH];
+	char	**env_paths;
+	char	full_env_path[MAX_PATH];
 
 	env_paths = get_bin_paths(*env);
+	if (env_paths == NULL)
+	{
+		puterror(false_command, read_argv[0], "");
+		return ;
+	}
 	if (try_exec_bins(read_argv, env_paths, full_env_path))
 	{
 		if (!fork())
@@ -43,13 +49,11 @@ static void 	exec_bins(char **read_argv, char ***env)
 		else
 			wait(NULL);
 	}
-	else
-		puterror(false_command, read_argv[0], "");
 	if (env_paths)
 		free_env_paths(env_paths);
 }
 
-void 	get_execute(char **read_argv, char ***env)
+void			get_execute(char **read_argv, char ***env)
 {
 	if (exec_builtins(read_argv, env))
 		return ;

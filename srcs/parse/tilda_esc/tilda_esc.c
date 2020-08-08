@@ -35,7 +35,7 @@ static int		get_begin(char **begin, char **read_argv, int tilda_i)
 	return (1);
 }
 
-void	tilda_esc(char **read_argv, char *home, int tilda_i)
+void			tilda_esc(char **read_argv, char *home, int tilda_i)
 {
 	char *begin;
 	char *end;

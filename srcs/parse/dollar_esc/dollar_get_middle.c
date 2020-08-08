@@ -13,7 +13,8 @@
 #include "libft.h"
 #include "libft_minishell.h"
 
-static char *on_env_change(char **read_argv, char **env, int dollar_i, int end_of_middle)
+static char		*on_env_change(char **read_argv, char **env,\
+int dollar_i, int end_of_middle)
 {
 	char *env_name;
 	char *tmp;
@@ -28,11 +29,12 @@ static char *on_env_change(char **read_argv, char **env, int dollar_i, int end_o
 	return (middle);
 }
 
-char	*dollar_get_middle(char **read_argv, char **argv, char **env, int end_of_middle)
+char			*dollar_get_middle(char **read_argv, char **argv,\
+char **env, int end_of_middle)
 {
-	int dollar_i;
-	char *middle;
-	int argv_index;
+	int		dollar_i;
+	char	*middle;
+	int		argv_index;
 
 	middle = NULL;
 	dollar_i = ft_chrsetcmp(*read_argv, "$");
