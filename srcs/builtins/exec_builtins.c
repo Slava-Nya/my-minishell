@@ -15,14 +15,22 @@
 
 int		exec_builtins(char **read_argv, char ***env)
 {
-	int i;
+	int							i;
+	static const t_builtins		builtins[BUILTINS_CNT] = {
+			{"echo", &echo_main},
+			{"cd", &cd_main},
+			{"setenv", &setenv_main},
+			{"unsetenv", &unsetenv_main},
+			{"env", &env_main},
+			{"exit", &exit_main}
+	};
 
 	i = 0;
 	while (i < BUILTINS_CNT)
 	{
-		if (!(ft_strcmp(read_argv[0], g_builtins[i].name)))
+		if (!(ft_strcmp(read_argv[0], builtins[i].name)))
 		{
-			g_builtins[i].f(read_argv, env);
+			builtins[i].f(read_argv, env);
 			return (1);
 		}
 		i++;

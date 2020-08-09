@@ -11,10 +11,13 @@
 /* ************************************************************************** */
 
 #include "builtins.h"
+#include "libft.h"
 
 int		exit_main(char **argv, char ***env)
 {
 	(void)env;
-	(void)argv;
-	exit(0);
+	if (ft_arraylen(argv) >= 2)
+		exit(ft_atoi(argv[1]));
+	else
+		exit(0);
 }

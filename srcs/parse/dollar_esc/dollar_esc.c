@@ -13,16 +13,15 @@
 #include "minishell.h"
 
 static void		dollar_change(char **read_argv, char **argv,\
-char **env, int dollar_i)
+char **env, int section[2])
 {
 	char	*begin;
 	char	*middle;
 	char	*end;
-	int		end_of_middle;
 
-	dollar_get_begin(read_argv, &begin, dollar_i);
-	end_of_middle = dollar_get_end(read_argv, &end, dollar_i);
-	middle = dollar_get_middle(read_argv, argv, env, end_of_middle);
+	dollar_get_begin(read_argv, &begin, section[0]);
+	section[1] = dollar_get_end(read_argv, &end, section[0]);
+	middle = dollar_get_middle(read_argv, argv, env, section);
 	free(*read_argv);
 	*read_argv = ft_nstrjoin(3, begin, middle, end);
 	free(begin);
@@ -32,12 +31,15 @@ char **env, int dollar_i)
 
 void			dollar_esc(char **read_argv, char **argv, char **env)
 {
-	int dollar_i;
+	int section[2];
 
-	dollar_i = ft_chrsetcmp(*read_argv, "$");
-	while (dollar_i >= 0 && (int)(ft_strlen(*read_argv)) > (dollar_i))
+	section[0] = 0;
+	section[1] = 0;
+	while ((*read_argv)[section[0]])
 	{
-		dollar_change(read_argv, argv, env, dollar_i);
-		dollar_i = ft_chrsetcmp(*read_argv, "$");
+		if ((*read_argv)[section[0]] == '$' &&\
+		(int)(ft_strlen(*read_argv)) > (section[0]))
+			dollar_change(read_argv, argv, env, section);
+		section[0]++;
 	}
 }

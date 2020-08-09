@@ -18,7 +18,8 @@ int		dollar_get_end(char **read_argv, char **end, int dollar_i)
 
 	if (ft_isdigit((*read_argv)[dollar_i + 1]) > 0)
 	{
-		*end = ft_piecestrcpy(*read_argv, dollar_i + 2, ft_strlen(*read_argv));
+		*end = ft_piecestrcpy(*read_argv,\
+		dollar_i + 2, ft_strlen(*read_argv));
 		return (0);
 	}
 	invalid_symb = dollar_i + 1;
@@ -30,6 +31,8 @@ int		dollar_get_end(char **read_argv, char **end, int dollar_i)
 			break ;
 		invalid_symb++;
 	}
+	if (invalid_symb == 1)
+		invalid_symb = 0;
 	*end = ft_piecestrcpy(*read_argv, invalid_symb, ft_strlen(*read_argv));
 	return (invalid_symb);
 }

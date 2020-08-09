@@ -38,16 +38,6 @@ int							exit_main(char **line_argv, char ***env);
 
 typedef struct s_builtins	t_builtins;
 
-static const t_builtins		g_builtins[BUILTINS_CNT] =
-{
-	{"echo", &echo_main},
-	{"cd", &cd_main},
-	{"setenv", &setenv_main},
-	{"unsetenv", &unsetenv_main},
-	{"env", &env_main},
-	{"exit", &exit_main}
-};
-
 int							exec_builtins(char **read_argv, char ***env);
 
 #endif

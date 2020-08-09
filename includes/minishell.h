@@ -16,11 +16,6 @@
 # define MAX_PATH 256
 # include "libft.h"
 
-/*
- * перенести г,структуру
- * echo $/
- */
-
 int		main(int argc, char **argv, char **env);
 char	**get_parse(char **argv, char *read_buf, char **env);
 
@@ -32,7 +27,7 @@ void	tilda_esc(char **read_argv, char *home, int tilda_i);
 void	dollar_esc(char **read_argv, char **argv, char **env);
 void	dollar_get_begin(char **read_argv, char **begin, int dollar_i);
 char	*dollar_get_middle(char **read_argv, char **argv,\
-char **env, int end_of_middle);
+char **env, int *section);
 int		dollar_get_end(char	**read_argv, char **end, int dollar_i);
 
 #endif
