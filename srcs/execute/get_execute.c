@@ -43,7 +43,8 @@ static void		exec_bins(char **read_argv, char ***env)
 	{
 		if (!fork())
 		{
-			exit(execve(full_env_path, read_argv, *env));
+			execve(full_env_path, read_argv, *env);
+			exit (0);
 		}
 		else
 			wait(NULL);

@@ -30,7 +30,8 @@ static char		*check_path(char *path, char *full_env_path)
 	unsigned int	type;
 
 	i = 0;
-	stat(path, &info);
+	if (stat(path, &info))
+		return (NULL);
 	type = info.st_mode & S_IFMT;
 	if (type == S_IFDIR)
 	{
@@ -55,7 +56,7 @@ char *full_env_path)
 	{
 		if (!(full_env_path = check_path(read_argv[0], full_env_path)))
 		{
-			puterror(no_rules, read_argv[0], "");
+			puterror(false_command, read_argv[0], "");
 			return (NULL);
 		}
 		if (!(access(full_env_path, F_OK | X_OK)))

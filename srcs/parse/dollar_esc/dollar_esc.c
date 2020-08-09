@@ -32,14 +32,17 @@ char **env, int section[2])
 void			dollar_esc(char **read_argv, char **argv, char **env)
 {
 	int section[2];
+	int len;
 
+	len = ft_strlen(*read_argv);
 	section[0] = 0;
 	section[1] = 0;
-	while ((*read_argv)[section[0]])
+//	free(*read_argv);
+//	*read_argv = ft_strnew(0);
+	while (section[0] < len)
 	{
-		if ((*read_argv)[section[0]] == '$' &&\
-		(int)(ft_strlen(*read_argv)) > (section[0]))
+		if ((*read_argv)[section[0]] == '$' && len > (section[0]))
 			dollar_change(read_argv, argv, env, section);
-		section[0]++;
+		(section[0])++;
 	}
 }

@@ -21,8 +21,7 @@ int		env_main(char **argv, char ***env)
 	env_cpy = *env;
 	while (*env_cpy)
 	{
-		if ((*env_cpy)[0])
-			ft_putendl(*env_cpy);
+		ft_putendl(*env_cpy);
 		env_cpy++;
 	}
 	(void)argv;

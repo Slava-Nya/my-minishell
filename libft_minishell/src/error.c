@@ -24,8 +24,11 @@ void	puterror(int errno, char *argv, char *builtin)
 	};
 
 	ft_putstr_fd("bash: ", 2);
-	ft_putstr_fd(builtin, 2);
-	ft_putstr_fd(": ", 2);
+	if (*builtin)
+	{
+		ft_putstr_fd(builtin, 2);
+		ft_putstr_fd(": ", 2);
+	}
 	if (*argv)
 		ft_putstr_fd(argv, 2);
 	if (*argv)

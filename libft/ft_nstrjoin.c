@@ -25,6 +25,11 @@ char			*ft_nstrjoin(int n, ...)
 	va_start(args, n);
 	while (n--)
 		len += ft_strlen(va_arg(args, char *));
+	if (len == 0)
+	{
+		str = ft_strnew(0);
+		return (str);
+	}
 	va_end(args);
 	if (!(str = ft_strnew(len)))
 		return (NULL);

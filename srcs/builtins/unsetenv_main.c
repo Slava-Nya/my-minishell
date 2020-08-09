@@ -14,15 +14,55 @@
 #include "errors.h"
 #include "libft_minishell.h"
 
+static void		free_env(char ***env)
+{
+	int i;
+
+	i = 0;
+	while ((*env)[i])
+	{
+		free((*env)[i]);
+		i++;
+	}
+	free(*env);
+}
+
+static char		**cpy_env(char ***arr, int dest_len, int del_str)
+{
+	char	**dest;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!arr || !(*arr))
+		return (NULL);
+	dest = ft_xmalloc(sizeof(char *) * (dest_len + 1));
+	dest[dest_len] = NULL;
+	while (i < dest_len)
+	{
+		if (j == del_str)
+			j++;
+		dest[i] = ft_strdup((*arr)[j]);
+		i++;
+		j++;
+	}
+	return (dest);
+}
+
 static void		unsetenv_argv(char *argv, char ***env)
 {
 	int		cnt;
 	char	*argv_full;
+	char	**new_env;
 
 	argv_full = ft_strjoin(argv, "=");
 	cnt = change_env_str(argv_full, "", env);
 	if (cnt >= 0)
-		(*env)[cnt][0] = '\0';
+	{
+		new_env = cpy_env(env, ft_arraylen(*env) - 1, cnt);
+		(*env) = new_env;
+	}
 	free(argv_full);
 }
 

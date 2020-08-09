@@ -41,8 +41,9 @@ int				main(int argc, char **argv, char **env)
 		red = read(0, read_buf, BUF);
 		read_buf[red] = '\0';
 		read_argv = get_parse(argv, read_buf, env_cpy);
-		if (*read_argv)
+		if (*read_argv && **read_argv)
 			get_execute(read_argv, &env_cpy);
 		free_read_argv(&read_argv);
 	}
+
 }
