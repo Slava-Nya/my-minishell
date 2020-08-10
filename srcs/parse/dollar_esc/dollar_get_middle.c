@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include "libft_minishell.h"
+#include "minishell.h"
 
 static char		*on_env_change(char **read_argv, char **env,\
 int dollar_i, int end_of_middle)
@@ -30,23 +31,23 @@ int dollar_i, int end_of_middle)
 }
 
 char			*dollar_get_middle(char **read_argv, char **argv,\
-char **env, int *section)
+char **env, t_section sec)
 {
 	char	*middle;
 	int		argv_index;
 
 	middle = NULL;
-	if (ft_isdigit((*read_argv)[section[0] + 1]) &&
-		argv[(int)((*read_argv)[section[0] + 1])])
+	if (ft_isdigit((*read_argv)[sec.dollar_i + 1]) &&
+		argv[(int)((*read_argv)[sec.dollar_i + 1])])
 	{
-		argv_index = (*read_argv)[section[0] + 1] - '0';
+		argv_index = (*read_argv)[sec.dollar_i + 1] - '0';
 		if (argv_index < ft_arraylen(argv))
 			middle = ft_strdup(argv[argv_index]);
 		else
 			middle = ft_strnew(0);
 	}
-	else if (ft_isalpha((int)((*read_argv)[section[0] + 1])))
-		middle = on_env_change(read_argv, env, section[0], section[1]);
+	else if (ft_isalpha((int)((*read_argv)[sec.dollar_i + 1])))
+		middle = on_env_change(read_argv, env, sec.dollar_i, sec.invalid_symb);
 	else
 		middle = ft_strnew(0);
 	return (middle);

@@ -40,7 +40,7 @@ static void		change_directory(char ***env, char *new_pwd, char *oldpwd)
 {
 	char pwd[MAX_PATH];
 
-	if (!new_pwd)
+	if (!new_pwd || !*new_pwd)
 		return ;
 	if (check_access(new_pwd))
 		return ;

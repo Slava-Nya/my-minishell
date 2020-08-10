@@ -61,6 +61,7 @@ static void		unsetenv_argv(char *argv, char ***env)
 	if (cnt >= 0)
 	{
 		new_env = cpy_env(env, ft_arraylen(*env) - 1, cnt);
+		free_env(env);
 		(*env) = new_env;
 	}
 	free(argv_full);

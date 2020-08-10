@@ -45,5 +45,4 @@ int				main(int argc, char **argv, char **env)
 			get_execute(read_argv, &env_cpy);
 		free_read_argv(&read_argv);
 	}
-
 }

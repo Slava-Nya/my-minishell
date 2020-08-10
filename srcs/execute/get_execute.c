@@ -15,6 +15,14 @@
 #include "libft_minishell.h"
 #include "errors.h"
 
+static int		is_path(const char *path)
+{
+	if (*path == '/' || (*path == '.' && *(path + 1) == '/') \
+		|| (*path == '.' && *(path + 1) == '.' && *(path + 2) == '/'))
+		return (1);
+	return (0);
+}
+
 static void		free_env_paths(char **env_paths)
 {
 	int	i;
@@ -34,7 +42,7 @@ static void		exec_bins(char **read_argv, char ***env)
 	char	full_env_path[MAX_PATH];
 
 	env_paths = get_bin_paths(*env);
-	if (env_paths == NULL)
+	if (env_paths == NULL && !(is_path(read_argv[0])))
 	{
 		puterror(false_command, read_argv[0], "");
 		return ;
@@ -42,10 +50,7 @@ static void		exec_bins(char **read_argv, char ***env)
 	if (try_exec_bins(read_argv, env_paths, full_env_path))
 	{
 		if (!fork())
-		{
-			execve(full_env_path, read_argv, *env);
-			exit (0);
-		}
+			exit((execve(full_env_path, read_argv, *env)));
 		else
 			wait(NULL);
 	}

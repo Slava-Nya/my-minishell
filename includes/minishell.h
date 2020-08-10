@@ -16,18 +16,31 @@
 # define MAX_PATH 256
 # include "libft.h"
 
-int		main(int argc, char **argv, char **env);
-char	**get_parse(char **argv, char *read_buf, char **env);
+struct						s_section{
+	int		dollar_i;
+	int		invalid_symb;
+};
 
-void	get_execute(char **read_argv, char ***env);
-char	*try_exec_bins(char **read_argv, char **env_paths, char *full_env_path);
+typedef struct s_section	t_section;
 
-void	tilda_esc(char **read_argv, char *home, int tilda_i);
+int							main(int argc, char **argv, char **env);
+char						**get_parse(char **argv, char *read_buf,\
+char **env);
 
-void	dollar_esc(char **read_argv, char **argv, char **env);
-void	dollar_get_begin(char **read_argv, char **begin, int dollar_i);
-char	*dollar_get_middle(char **read_argv, char **argv,\
-char **env, int *section);
-int		dollar_get_end(char	**read_argv, char **end, int dollar_i);
+void						get_execute(char **read_argv, char ***env);
+char						*try_exec_bins(char **read_argv, char **env_paths,\
+char *full_env_path);
+
+void						tilda_esc(char **read_argv, char *home,\
+int tilda_i);
+
+void						dollar_esc(char **read_argv, char **argv,\
+char **env);
+void						dollar_get_begin(char **read_argv, char **begin,\
+int dollar_i);
+char						*dollar_get_middle(char **read_argv, char **argv,\
+char **env, t_section sec);
+int							dollar_get_end(char	**read_argv, char **end,\
+int dollar_i);
 
 #endif

@@ -31,7 +31,6 @@ int		dollar_get_end(char **read_argv, char **end, int dollar_i)
 			break ;
 		invalid_symb++;
 	}
-//	invalid_symb -= 1;
 	if (invalid_symb == 1)
 		invalid_symb = 0;
 	*end = ft_piecestrcpy(*read_argv, invalid_symb, ft_strlen(*read_argv));
